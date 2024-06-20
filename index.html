@@ -1,44 +1,73 @@
-<DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html>
-
 <head>
-    <title>Experiments with JavaScript</title>
+    <title>
+        Spot the thing!
+    </title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body style="background-color: tan;">
+    <h3><div id="randomquestion"></div></h3>
+    <div id="image"><img src="image.png" usemap="#image-map">
+    <div id="randimap"><div>
 
     <script>
-        console.log("Start of the page");
+        <!--Questions-->
+        let q1 = "<h2>Click on the person looking through a telescope"
+        let q2 = "<h2>Click on the person riding a bike"
+        let q3 = "<h2>Click on the person petting the ducks"
 
-        function show(){
-            let x = 0;
-            let maxcount = 10;
-            console.log("Button Pressed.");
-            document.getElementById("partB").style.display = "block";
+        <!--Defines all the zones for each question-->
+        let map1 = `<map name="image-map">
+                        <area target="" alt="" title="" href="correct.html" coords="209,68,194,88,188,114,190,127,203,127,218,127,234,128,244,120,237,102,237,89,239,74,222,71" shape="poly">
+                        <area target="" alt="" title="" href="incorrecttelescope.html" coords="2,772,703,129" shape="rect">
+                        <area target="" alt="" title="" href="incorrecttelescope.html" coords="189,0,3,129" shape="rect">
+                        <area target="" alt="" title="" href="incorrecttelescope.html" coords="245,2,703,131" shape="rect">
+                        <area target="" alt="" title="" href="incorrecttelescope.html" coords="189,0,244,70" shape="rect">
+                    </map>`;
+		let map2 = `<map name="image-map">
+                        <area target="" alt="" title="" href="correct.html" coords="587,716,578,742,569,754,561,772,573,772,584,772,593,772,608,771,616,772,625,772,631,772,632,757,619,741,612,734,607,717" shape="poly">
+                        <area target="" alt="" title="" href="incorrectbike.html" coords="1,771,561,1" shape="rect">
+                        <area target="" alt="" title="" href="incorrectbike.html" coords="559,719,703,0" shape="rect">
+                        <area target="" alt="" title="" href="incorrectbike.html" coords="632,719,703,772" shape="rect">
+                        <area target="" alt="" title="" href="incorrectbike.html" coords="557,718,562,772,587,714" shape="poly">
+                        <area target="" alt="" title="" href="incorrectbike.html" coords="632,712,634,766,596,708" shape="poly">
+                    </map>`;
+		let map3 = `<map name="image-map">
+                        <area target="" alt="" title="" href="correct.html" coords="628,254,625,268,609,271,599,279,604,291,617,295,630,295,643,293,654,291,661,284,660,272,657,259,650,247,642,245" shape="poly">
+                        <area target="" alt="" title="" href="incorrectduck.html" coords="603,0,2,772" shape="rect">
+                        <area target="" alt="" title="" href="incorrectduck.html" coords="653,246,603,0" shape="rect">
+                        <area target="" alt="" title="" href="incorrectduck.html" coords="600,291,660,772" shape="rect">
+                        <area target="" alt="" title="" href="incorrectduck.html" coords="660,0,703,772" shape="rect">
+                        <area target="" alt="" title="" href="incorrectduck.html" coords="603,236,604,289,648,239,626,239" shape="poly">
+                        <area target="" alt="" title="" href="incorrectduck.html" coords="591,287,672,305" shape="rect">
+                        <area target="" alt="" title="" href="incorrectduck.html" coords="672,262,653,3" shape="rect">
+                    </map>`;
 
-            while (x<maxcount){
-                document.getElementById("partB").innerHTML+="<h4>Ouch!</h4>";
-                x = x+1;
-            }
-            
+        <!--Randomly generates a number between 1 and 3-->
+        let randq = Math.floor(Math.random()*10)%3+1;
+
+        if (randq == 1){
+            document.getElementById('randomquestion').innerHTML = q1;
+            document.getElementById('randimap').innerHTML = map1;
+        } else if (randq == 2) {
+            document.getElementById('randomquestion').innerHTML = q2;
+            document.getElementById('randimap').innerHTML = map2;				
+        } else if (randq == 3) {
+            document.getElementById('randomquestion').innerHTML = q3;
+            document.getElementById('randimap').innerHTML = map3;			
         }
-       
-    </script>
-
-</head>
-
-<body>
-
-<div id="partA">
-    <h1>Causes</h1>
-    <button onclick ="show()">Please Don't Press!</button>
-
-</div>
-<div id="partB" style="display:none;">
-    <h1>Effects</h1>
-    Surprise! Malware Injecting...
     
+    
+     </script>
 
-
-</div>
 
 </body>
+
+
+
+
+
+
+
 </html>
